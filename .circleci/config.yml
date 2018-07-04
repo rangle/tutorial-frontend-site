@@ -45,7 +45,7 @@ jobs:
           at: ~/repo
       - run:
           name: Install AWS CLI
-          command: apt-get install awscli
+          command: sudo apt-get install awscli
       - run:
           name: Configure AWS CLI
           command: |
