@@ -39,17 +39,13 @@ jobs:
     <<: *defaults
     docker:
       # specify the version you desire here
-      - image: circleci/node:10
+      - image: joseguillen/awscli-container
     steps:
       - attach_workspace:
           at: ~/repo
       - run:
-          name: Install AWS CLI
-          command: sudo apt-get install awscli
-      - run:
           name: Configure AWS CLI
-          command: |
-            aws configure set default.region ${AWS_DEFAULT_REGION}
+          command: aws configure set default.region ${AWS_DEFAULT_REGION}
       - run:
           name: Deploy entire directory
           command: aws s3 cp . s3://${BUCKET_NAME} --recursive
